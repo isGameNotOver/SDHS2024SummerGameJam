@@ -53,12 +53,8 @@ public class Enemy : MonoBehaviour
             else if (transform.position.x > realplayerTransform.position.x)
             {
                 rigid.velocity = new Vector2(-moveSpeed * Time.deltaTime, rigid.velocity.y);
-                Debug.Log("math velo = " + (-moveSpeed) * Time.deltaTime);
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
-
-            Debug.Log("velo =" + rigid.velocity);
-            Debug.Log("time =" + Time.deltaTime);
         }
         else
         {

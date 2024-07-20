@@ -134,4 +134,11 @@ public class PlayerMovement : MonoBehaviour
 
         canDash = true;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyAttackRange"))
+            {
+                StatManager.instance.PlayerCurHp -= 5;
+            } 
+    }
 }

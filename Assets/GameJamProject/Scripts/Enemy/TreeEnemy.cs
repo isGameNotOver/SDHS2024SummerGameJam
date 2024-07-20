@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class TreeEnemy : Enemy
 {
+    [SerializeField] private GameObject boxcoilder;
+
     private RaycastHit2D rayhit;
     private bool isAttackAnimStart;
 
@@ -41,6 +44,18 @@ public class TreeEnemy : Enemy
         {
             isAttack = false;
         }
+    }
+    
+    private void _Attack()
+    {
+        StartCoroutine(Cor_Attack());
+    }
+
+    IEnumerator Cor_Attack()
+    {
+        boxcoilder.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        boxcoilder.SetActive(false);
     }
 
     public void OnAttackEndEvent()
