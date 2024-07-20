@@ -13,7 +13,7 @@ public class HpBar : MonoBehaviour
     [SerializeField] protected float maxHp;
     [SerializeField] protected float curHp;
 
-    protected virtual void BarPos()
+    protected virtual void SetHpBar()
     {
         if (barMaster != null)
         {
@@ -34,6 +34,7 @@ public class HpBar : MonoBehaviour
 
     protected virtual void Death()
     {
-
+        Destroy(barMaster.gameObject);
+        Destroy(gameObject);
     }
 }

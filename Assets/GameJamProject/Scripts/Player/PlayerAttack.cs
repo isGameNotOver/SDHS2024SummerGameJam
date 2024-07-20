@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject fireBullet;
+    public GameObject waterBullet;
     public Transform bulletPos;
 
     private Transform player;
 
     [SerializeField] private WaitForSeconds waitFire = new WaitForSeconds(1f);
+    [SerializeField] private WaitForSeconds waitWater = new WaitForSeconds(0.2f);
 
     public bool firePossibility = false;
     public bool waterPossibility = false;
@@ -31,16 +33,29 @@ public class PlayerAttack : MonoBehaviour
         {
             if(player.eulerAngles.y == 0)
             {
-                var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+                var go = Instantiate(fireBullet, bulletPos.position, Quaternion.identity);
                 go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
             }
             else
             {
-                var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+                var go = Instantiate(fireBullet, bulletPos.position, Quaternion.identity);
                 go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
             }
 
             StartCoroutine(Co_FireCooltime());
+        }
+        else if(Input.GetKeyDown(KeyCode.S) && waterPossibility)
+        {
+            if (player.eulerAngles.y == 0)
+            {
+                var go = Instantiate(waterBullet, bulletPos.position, Quaternion.identity);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
+            }
+            else
+            {
+                var go = Instantiate(waterBullet, bulletPos.position, Quaternion.identity);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
+            }
         }
     }
 
@@ -50,5 +65,12 @@ public class PlayerAttack : MonoBehaviour
         yield return waitFire;
         firePossibility = true;
     }
-}
+
+    IEnumerator Co_WaterCooltime()
+    {
+        waterPossibility = false;
+        yield return waitWater;
+        waterPossibility = true;
+    }
+ }
 
