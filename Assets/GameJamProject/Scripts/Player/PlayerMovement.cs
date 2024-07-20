@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GroundCheck()
     {
-        if (rigid.velocity.y < 0)
+        if (rigid.velocity.y <= 0 && isJumping)
         {
             bool isGrounded = Physics2D.OverlapBox(groundCheckPos.position, groundBoxSize, 0, groundMask);
 
