@@ -25,15 +25,15 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if(player.rotation.y < 0)
+            if(player.eulerAngles.y == 0)
             {
                 var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
-                go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
             }
             else
             {
                 var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
-                go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
             }
         }
     }
