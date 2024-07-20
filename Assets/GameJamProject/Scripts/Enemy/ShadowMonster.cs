@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class ShadowMonster : Enemy
 {
-    
+    private void Update()
+    {
+        Movement();
+        PlayerTracking(playerCheckRange);
+    }
 }
