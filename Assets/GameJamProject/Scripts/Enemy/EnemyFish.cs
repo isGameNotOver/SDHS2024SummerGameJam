@@ -57,6 +57,7 @@ public class EnemyFish : Enemy
         {
             var go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
+            go.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {

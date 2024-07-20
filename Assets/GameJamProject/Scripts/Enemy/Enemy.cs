@@ -39,12 +39,12 @@ public class Enemy : MonoBehaviour
         {
             if (transform.position.x < playerTransform.position.x)
             {
-                rigid.velocity = new Vector2(moveSpeed, rigid.velocity.y);
+                rigid.velocity = new Vector2(moveSpeed * Time.deltaTime, rigid.velocity.y);
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
             else if (transform.position.x > playerTransform.position.x)
             {
-                rigid.velocity = new Vector2(-moveSpeed, rigid.velocity.y);
+                rigid.velocity = new Vector2(-moveSpeed * Time.deltaTime, rigid.velocity.y);
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
