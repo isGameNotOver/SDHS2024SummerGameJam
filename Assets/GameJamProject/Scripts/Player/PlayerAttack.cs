@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] GameObject fireBullet;
-    [SerializeField] Transform firePoint;
-    [SerializeField] Quaternion quaternion;
+    public GameObject bullet;
+    public Transform bulletPos;
 
-    public bool possibleFire;
+    private Transform player;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        player = GetComponent<Transform>();
+    }
+
+    private bool isAttack;
+
+    private void Update()
+    {
+        Attack();
+    }
+
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            // 현재 오브젝트의 Euler 각도를 가져옴.
-            Vector3 euler = transform.rotation.eulerAngles;
-            Debug.Log(euler);
-
-            quaternion = fireBullet.transform.rotation;
-            // 플레이어의 y축 회전 값을 불릿의 회전 쿼터니언에 적용
-            quaternion = Quaternion.Euler(quaternion.eulerAngles.x, quaternion.eulerAngles.y * -1, euler.y);
-
-            Instantiate(fireBullet, firePoint.position, quaternion);
+            if(player.rotation.y < 0)
+            {
+                var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
+            }
+            else
+            {
+                var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
+                go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
+            }
         }
     }
 }
