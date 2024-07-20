@@ -205,7 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rigid: {fileID: 0}
+  animator: {fileID: 0}
+  bulletDeathTime: 1
 --- !u!61 &4618793885607140304
 BoxCollider2D:
   m_ObjectHideFlags: 0
