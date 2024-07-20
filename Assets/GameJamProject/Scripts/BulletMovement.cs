@@ -15,7 +15,7 @@ public class BulletMovement : MonoBehaviour
     public void Update()
     {
         transform.position += (Vector3)direction * bulletMoveSpeed * Time.deltaTime;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 1f);
     }
 
 }
