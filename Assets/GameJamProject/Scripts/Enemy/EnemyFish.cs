@@ -4,33 +4,69 @@ using UnityEngine;
 
 public class EnemyFish : Enemy
 {
-    private bool isAttack = false;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform firePoint;
+    [SerializeField] Quaternion quaternion;
 
-    private void Awake()
+    private void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        StartCoroutine(Attack());
     }
     private void Update()
     {
-        if (!isPlayerCheck)
+        if (!isPlayerCheck && !isAttack)
         {
             Movement();
         }
-        if(!isAttack)
-        PlayerTracking(playerCheckRange);
-        Attack(attackRange);
+        if (!isAttack)
+        {
+            PlayerTracking(playerCheckRange);
+        }
     }
 
-    private void Attack(float range)
+    protected override void PlayerTracking(float range)
     {
-        isAttack = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
-        if(isAttack)
+        isPlayerCheck = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
+
+        if (isPlayerCheck)
         {
-            if (Mathf.Abs(transform.position.y - playerTransform.position.y) < 0.1f)
+            if (transform.position.x < playerTransform.position.x)
             {
-                rigid.velocity = new Vector2(0, rigid.velocity.y);
-                Debug.Log("АјАн!!!!!!");
+                rigid.velocity = new Vector2(moveSpeed, rigid.velocity.y);
+                transform.eulerAngles = new Vector3(0, 180, 0);
             }
+            else if (transform.position.x > playerTransform.position.x)
+            {
+                rigid.velocity = new Vector2(-moveSpeed, rigid.velocity.y);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+        }
+        else
+        {
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        while (true)
+        {
+            if (isPlayerCheck)
+            {
+                if ((Mathf.Abs(transform.position.y - playerTransform.position.y) < 2f) && (Mathf.Abs(transform.position.x - playerTransform.position.x) < 2f))
+                {
+                    isAttack = true;
+                    Vector3 euler = transform.rotation.eulerAngles;
+
+                    quaternion = bullet.transform.rotation;
+                    quaternion = Quaternion.Euler(quaternion.eulerAngles.x, quaternion.eulerAngles.y, euler.y);
+                    yield return new WaitForSeconds(1f);
+                    Instantiate(bullet, firePoint.position, quaternion);
+                    isAttack = false;
+                }
+            }
+
+            yield return null;
         }
     }
 }
