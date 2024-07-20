@@ -7,16 +7,21 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed = default;
     [SerializeField] protected float playerCheckRange = default;
-    [SerializeField] protected float attackRange = default;
     [SerializeField] protected bool isPlayerCheck;
     [SerializeField] protected LayerMask chaseTarget = default;
     [SerializeField] protected Transform playerTransform;
+
+    protected bool isAttack = false;
 
     protected Vector3 moveVelocity;
     protected Rigidbody2D rigid;
     protected bool isLeft = true;
 
     // [SerializeField] protected Animator animator;
+    protected void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();  
+    }
 
     protected virtual void Movement()
     {
@@ -67,8 +72,5 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, playerCheckRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

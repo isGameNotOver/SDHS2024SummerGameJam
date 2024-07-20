@@ -52,14 +52,14 @@ public class PlayerMovement : MonoBehaviour
             if (horizontal < 0)
             {
                 moveVelocity = Vector3.left;
-                transform.eulerAngles = new Vector3(0, 180, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 animator.SetBool("isMove", true);
             }
 
             else if (horizontal > 0)
             {
                 moveVelocity = Vector3.right;
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 animator.SetBool("isMove", true);
             }
             else

@@ -93,19 +93,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -124,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75fcc59490b1054bbe9db825f98f090
-      internalID: -330112750
+      spriteID: d8e5450e2418e5241b42993409046882
+      internalID: -1746849322
       vertices: []
       indices: 
       edges: []
@@ -145,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97bdef98e58142e45a392c9a51b7d8b0
-      internalID: -103501369
+      spriteID: 263eaf8d7be83494cad81970a66a7ef8
+      internalID: -1538075157
       vertices: []
       indices: 
       edges: []
@@ -166,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42c0bbd04bfaffd498b06b505014a028
-      internalID: -1975037744
+      spriteID: 4ae4795b839bae3429d294d5c0669cb5
+      internalID: 588409882
       vertices: []
       indices: 
       edges: []
@@ -187,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d910b8b93d805fd47b89fef037c2a189
-      internalID: 1178240994
+      spriteID: 1eb190ec01bcfac45a0d4a8868876878
+      internalID: 839431754
       vertices: []
       indices: 
       edges: []
@@ -208,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39b198e981e1a3f41b168f56041a74ae
-      internalID: 667496362
+      spriteID: 23243f25abb274b43909c498d9a606ce
+      internalID: 1593423002
       vertices: []
       indices: 
       edges: []
@@ -225,11 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      chwk-Sheet_0: -330112750
-      chwk-Sheet_1: -103501369
-      chwk-Sheet_2: -1975037744
-      chwk-Sheet_3: 1178240994
-      chwk-Sheet_4: 667496362
+      chwk-Sheet_0: -1746849322
+      chwk-Sheet_1: -1538075157
+      chwk-Sheet_2: 588409882
+      chwk-Sheet_3: 839431754
+      chwk-Sheet_4: 1593423002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
