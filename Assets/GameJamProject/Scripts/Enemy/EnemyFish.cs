@@ -26,8 +26,11 @@ public class EnemyFish : Enemy
         isAttack = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
         if(isAttack)
         {
-            rigid.velocity = new Vector2(0, rigid.velocity.y);
-            Debug.Log("공격!!!!!!");
+            if (Mathf.Abs(transform.position.y - playerTransform.position.y) < 0.1f)
+            {
+                rigid.velocity = new Vector2(0, rigid.velocity.y);
+                Debug.Log("공격!!!!!!");
+            }
         }
     }
 }
