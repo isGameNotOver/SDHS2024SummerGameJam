@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyFish : Enemy
 {
+    private bool isAttack = false;
 
     private void Awake()
     {
@@ -15,6 +16,11 @@ public class EnemyFish : Enemy
         {
             Movement();
         }
-        PlayerTracking(chaseRange);
+        PlayerTracking(playerCheckRange);
+    }
+    
+    private void Attack()
+    {
+
     }
 }

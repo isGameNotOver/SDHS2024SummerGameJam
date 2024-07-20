@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("Jump") && !isJumping && !isDashing)
         {
             animator.SetTrigger("isJump");
             isJumping = true;

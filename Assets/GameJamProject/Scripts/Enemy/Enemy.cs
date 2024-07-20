@@ -6,7 +6,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed = default;
-    [SerializeField] protected float chaseRange = default;
+    [SerializeField] protected float playerCheckRange = default;
+    [SerializeField] protected float attackRange = default;
     [SerializeField] protected bool isPlayerCheck;
     [SerializeField] private LayerMask chaseTarget = default;
     [SerializeField] protected Transform playerTransform;
@@ -65,6 +66,9 @@ public class Enemy : MonoBehaviour
     protected void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        Gizmos.DrawWireSphere(transform.position, playerCheckRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
