@@ -9,16 +9,17 @@ public class PlayerMovement : MonoBehaviour
     public int jumpCount = 1;
     public LayerMask groundMask;
 
-    [SerializeField] private bool canDash = true;
-    [SerializeField] private bool isDashing;
-    [SerializeField] private float dashingPower = 30f;
-    [SerializeField] private float dashingTime = 0.2f;
-    [SerializeField] private float dashCooldown = 0.7f;
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 20f;
+    private float dashingTime = 0.2f;
+    private float dashCooldown = 0.7f;
 
     [SerializeField] private Transform groundCheckPos;
     [SerializeField] private Vector2 groundBoxSize = new Vector2();
     private Rigidbody2D rigid;
     private Animator animator;
+    private Ghost ghost;
 
     [SerializeField] bool isJumping = false;
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigid = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        ghost = GetComponent<Ghost>();
     }
     void Update()
     {
@@ -105,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        ghost.makeGhost = true;
 
         float originalGravity = 3f;
 
@@ -117,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
         rigid.velocity = Vector2.zero;
 
         isDashing = false;
+        ghost.makeGhost = false;
 
         yield return new WaitForSeconds(dashCooldown);
 
