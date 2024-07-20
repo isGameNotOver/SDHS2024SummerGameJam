@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da819361ed35e14438264ba4dd200407
+guid: 50001af554ef08b47934bc7c0bf9a091
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bq2-0011-Sheet_0
+      name: Bwk-0011-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 155
+        width: 72
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d8da66676ab534b99f33b60eca9d0f
-      internalID: 1370951075
+      spriteID: 01fdf1f94c55d12478e8591c82e4aaf6
+      internalID: -547793905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bq2-0011-Sheet_1
+      name: Bwk-0011-Sheet_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 72
         y: 0
-        width: 200
-        height: 155
+        width: 72
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 127453a451b78f64183ed65b8c5359cf
-      internalID: 1961798605
+      spriteID: 3e88f499d202e9f4dbf599bf18fa0d0e
+      internalID: -1566606574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bq2-0011-Sheet_2
+      name: Bwk-0011-Sheet_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 144
         y: 0
-        width: 200
-        height: 155
+        width: 72
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ec78aef19f267b4eb8439af6e5accaf
-      internalID: -921845509
+      spriteID: ac717054069f6ad4aa07180ae230bef9
+      internalID: -238267650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bq2-0011-Sheet_3
+      name: Bwk-0011-Sheet_3
       rect:
         serializedVersion: 2
-        x: 600
+        x: 216
         y: 0
-        width: 200
-        height: 155
+        width: 72
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b3698631ba492f49919aba8a41ed010
-      internalID: -863390954
+      spriteID: 1095565c15f94094abc86a6af4f75575
+      internalID: 1979414993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bq2-0011-Sheet_4
+      name: Bwk-0011-Sheet_4
       rect:
         serializedVersion: 2
-        x: 800
+        x: 288
         y: 0
-        width: 200
-        height: 155
+        width: 72
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a21c92bdeb26684498fd0b5c588f923
-      internalID: -2072249491
+      spriteID: 0247c0f05ffb65149b5b473630142f29
+      internalID: -2123648949
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bq2-0011-Sheet_0: 1370951075
-      Bq2-0011-Sheet_1: 1961798605
-      Bq2-0011-Sheet_2: -921845509
-      Bq2-0011-Sheet_3: -863390954
-      Bq2-0011-Sheet_4: -2072249491
+      Bwk-0011-Sheet_0: -547793905
+      Bwk-0011-Sheet_1: -1566606574
+      Bwk-0011-Sheet_2: -238267650
+      Bwk-0011-Sheet_3: 1979414993
+      Bwk-0011-Sheet_4: -2123648949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
