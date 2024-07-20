@@ -16,11 +16,18 @@ public class EnemyFish : Enemy
         {
             Movement();
         }
+        if(!isAttack)
         PlayerTracking(playerCheckRange);
+        Attack(attackRange);
     }
-    
-    private void Attack()
-    {
 
+    private void Attack(float range)
+    {
+        isAttack = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
+        if(isAttack)
+        {
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            Debug.Log("АјАн!!!!!!");
+        }
     }
 }

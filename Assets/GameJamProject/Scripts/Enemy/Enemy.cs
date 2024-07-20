@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float playerCheckRange = default;
     [SerializeField] protected float attackRange = default;
     [SerializeField] protected bool isPlayerCheck;
-    [SerializeField] private LayerMask chaseTarget = default;
+    [SerializeField] protected LayerMask chaseTarget = default;
     [SerializeField] protected Transform playerTransform;
 
     protected Vector3 moveVelocity;
