@@ -21,7 +21,6 @@ public class VolumeControl : MonoBehaviour
     public void Master_Volume()
     {
         volumeMaster = sliderMaster.value;
-        AudioManager.audioManagerInstance.volumeMaster = (volumeMaster + conditioningValue) / conditioningValue; // 최하치인 -80을 0으로 바꾸기 위해 80을 더하고 0~1의 실수를 만들기 위해 80을 나누었다.
 
         if (volumeMaster == sliderMaster.minValue)
         {
@@ -34,7 +33,6 @@ public class VolumeControl : MonoBehaviour
     public void BGM_Volume()
     {
         volumeBGM = sliderBGM.value;
-        AudioManager.audioManagerInstance.volumeBGM = (volumeBGM + conditioningValue) / conditioningValue; // 최하치인 -80을 0으로 바꾸기 위해 80을 더하고 0~1의 실수를 만들기 위해 80을 나누었다.
 
         if (volumeBGM == sliderBGM.minValue)
         {
@@ -47,8 +45,7 @@ public class VolumeControl : MonoBehaviour
     public void SFX_Volume()
     {
         volumeSFX = sliderSFX.value;
-        AudioManager.audioManagerInstance.volumeSFX = (volumeSFX + conditioningValue) / conditioningValue; // 최하치인 -80을 0으로 바꾸기 위해 80을 더하고 0~1의 실수를 만들기 위해 80을 나누었다.
-
+       
         if (volumeSFX == sliderSFX.minValue)
         {
             volumeSFX = -conditioningValue;

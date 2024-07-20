@@ -5,22 +5,18 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager audioManagerInstance { get; private set; }
+    public static AudioManager Instance { get; private set; }
 
     [SerializeField] AudioMixer audioMixer;
 
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource effectSource;
 
-    public float volumeMaster;
-    public float volumeBGM;
-    public float volumeSFX;
-
     private void Awake()
     {
-        if (audioManagerInstance == null)
+        if (Instance == null)
         {
-            audioManagerInstance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
