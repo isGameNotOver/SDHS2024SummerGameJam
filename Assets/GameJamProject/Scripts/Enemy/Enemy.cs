@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected bool isAttack = false;
     [SerializeField] protected LayerMask chaseTarget = default;
     [SerializeField] protected Transform playerTransform;
+    [SerializeField] protected GameObject playerTarget;
     [SerializeField] protected Transform gizmoAttack;
     [SerializeField] protected Animator animator;
 
@@ -26,6 +27,11 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    protected void Start()
+    {
+        playerTarget = FindObjectOfType<PlayerMovement>().gameObject;
+    }
+
     protected virtual void Movement()
     {
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
@@ -35,22 +41,29 @@ public class Enemy : MonoBehaviour
     {
         isPlayerCheck = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
 
+        Transform realplayerTransform = playerTarget.GetComponent<Transform>();
+
         if (isPlayerCheck)
         {
-            if (transform.position.x < playerTransform.position.x)
+            if (transform.position.x < realplayerTransform.position.x)
             {
                 rigid.velocity = new Vector2(moveSpeed * Time.deltaTime, rigid.velocity.y);
                 transform.eulerAngles = new Vector3(0, 180, 0);
             }
-            else if (transform.position.x > playerTransform.position.x)
+            else if (transform.position.x > realplayerTransform.position.x)
             {
                 rigid.velocity = new Vector2(-moveSpeed * Time.deltaTime, rigid.velocity.y);
+                Debug.Log("math velo = " + (-moveSpeed) * Time.deltaTime);
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
+
+            Debug.Log("velo =" + rigid.velocity);
+            Debug.Log("time =" + Time.deltaTime);
         }
         else
         {
             rigid.velocity = new Vector2(0, rigid.velocity.y);
+
         }
     }
 
