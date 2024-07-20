@@ -21,14 +21,8 @@ public class FireBullet : MonoBehaviour
 
     void BulletMove()
     {
-        float z = transform.rotation.eulerAngles.z;
+        float z = transform.rotation.eulerAngles.z - 45;
         Vector2 direction = new Vector2(Mathf.Cos(z * Mathf.Deg2Rad), Mathf.Sin(z * Mathf.Deg2Rad));
         GetComponent<Rigidbody2D>().velocity = direction * speed;
-    }
-
-    public void Init(Vector3 direction, float speed)
-    {
-        Debug.Log(direction * speed);
-        rigid.velocity = direction * speed;
     }
 }
