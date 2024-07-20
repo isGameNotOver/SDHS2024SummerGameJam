@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyFish : Enemy
 {
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
-    [SerializeField] Quaternion quaternion;
+    private RaycastHit2D rayhit;
 
-    private void Start()
-    {
-        StartCoroutine(Attack());
-    }
+
     private void Update()
     {
         if (!isPlayerCheck && !isAttack)
@@ -22,51 +20,50 @@ public class EnemyFish : Enemy
         {
             PlayerTracking(playerCheckRange);
         }
+        Detect(playerCheckAttack);
     }
 
     protected override void PlayerTracking(float range)
     {
-        isPlayerCheck = Physics2D.OverlapCircle(transform.position, range, chaseTarget);
+        base.PlayerTracking(range);
+    }
 
-        if (isPlayerCheck)
+    private void Detect(float range)
+    {
+        Debug.DrawRay(transform.position, Vector3.right * (transform.eulerAngles.y == 0 ? -1f : 1f) * 4f, new Color(0, 1, 0));
+        rayhit = Physics2D.Raycast(transform.position, Vector3.right * (transform.eulerAngles.y == 0 ? -1f : 1f), 4f, LayerMask.GetMask("Player"));
+
+        if (rayhit.collider != null)
         {
-            if (transform.position.x < playerTransform.position.x)
-            {
-                rigid.velocity = new Vector2(moveSpeed, rigid.velocity.y);
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            else if (transform.position.x > playerTransform.position.x)
-            {
-                rigid.velocity = new Vector2(-moveSpeed, rigid.velocity.y);
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
+            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            isAttack = true;
+            animator.SetBool("isAttack", true);
+
         }
         else
         {
-            rigid.velocity = new Vector2(0, rigid.velocity.y);
+            isAttack = false;
+            animator.SetBool("isAttack", false);
         }
     }
-
-    IEnumerator Attack()
+    public void Attack()
     {
-        while (true)
+        if (rayhit.collider == null)
         {
-            if (isPlayerCheck)
-            {
-                if ((Mathf.Abs(transform.position.y - playerTransform.position.y) < 2f) && (Mathf.Abs(transform.position.x - playerTransform.position.x) < 2f))
-                {
-                    isAttack = true;
-                    Vector3 euler = transform.rotation.eulerAngles;
-
-                    quaternion = bullet.transform.rotation;
-                    quaternion = Quaternion.Euler(quaternion.eulerAngles.x, quaternion.eulerAngles.y, euler.y);
-                    yield return new WaitForSeconds(1f);
-                    Instantiate(bullet, firePoint.position, quaternion);
-                    isAttack = false;
-                }
-            }
-
-            yield return null;
+            return;
         }
+
+        if (transform.eulerAngles.y == 0)
+        {
+            var go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            go.GetComponent<BulletMovement>().SetDirection(Vector2.left);
+        }
+        else
+        {
+            var go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
+        }
+
+        Debug.Log("damage");
     }
 }

@@ -7,20 +7,23 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float moveSpeed = default;
     [SerializeField] protected float playerCheckRange = default;
+    [SerializeField] protected float playerCheckAttack = default;
     [SerializeField] protected bool isPlayerCheck;
+    [SerializeField] protected bool isAttack = false;
     [SerializeField] protected LayerMask chaseTarget = default;
     [SerializeField] protected Transform playerTransform;
+    [SerializeField] protected Transform gizmoAttack;
+    [SerializeField] protected Animator animator;
 
-    protected bool isAttack = false;
 
     protected Vector3 moveVelocity;
     protected Rigidbody2D rigid;
     protected bool isLeft = true;
 
-    // [SerializeField] protected Animator animator;
     protected void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();  
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Movement()

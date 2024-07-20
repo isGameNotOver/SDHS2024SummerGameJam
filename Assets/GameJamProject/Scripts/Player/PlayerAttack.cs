@@ -14,8 +14,6 @@ public class PlayerAttack : MonoBehaviour
         player = GetComponent<Transform>();
     }
 
-    private bool isAttack;
-
     private void Update()
     {
         Attack();
