@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float movePower = 1f;
     public float jumpPower = 1f;
     public int jumpCount = 1;
+
     public LayerMask groundMask;
 
     private bool canDash = true;
@@ -17,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Transform groundCheckPos;
     [SerializeField] private Vector2 groundBoxSize = new Vector2();
+    [SerializeField] bool isJumping = false;
+    [SerializeField] float horizontal;
+
     private Rigidbody2D rigid;
     private Animator animator;
     private Ghost ghost;
 
-    [SerializeField] bool isJumping = false;
 
     Vector3 moveVelocity;
 
@@ -41,20 +45,21 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         moveVelocity = Vector3.zero;
+        horizontal = Input.GetAxisRaw("Horizontal");
 
         if (!isDashing)
         {
-            if (Input.GetAxisRaw("Horizontal") < 0)
+            if (horizontal < 0)
             {
                 moveVelocity = Vector3.left;
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.eulerAngles = new Vector3(0, 180, 0);
                 animator.SetBool("isMove", true);
             }
 
-            else if (Input.GetAxisRaw("Horizontal") > 0)
+            else if (horizontal > 0)
             {
                 moveVelocity = Vector3.right;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.eulerAngles = new Vector3(0, 0, 0);
                 animator.SetBool("isMove", true);
             }
             else
@@ -98,9 +103,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (horizontal != 0)
         {
-            StartCoroutine(Cor_Dash());
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            {
+                StartCoroutine(Cor_Dash());
+            }
         }
     }
     private IEnumerator Cor_Dash()

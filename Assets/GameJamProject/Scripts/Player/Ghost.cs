@@ -31,7 +31,7 @@ public class Ghost : MonoBehaviour
 
                 ghostDelaySeconds = ghostDelay;
 
-                Destroy(currentGhost, 0.5f);
+                Destroy(currentGhost, 0.22f);
             }
         }
     }
