@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -8,6 +9,11 @@ public class PlayerAttack : MonoBehaviour
     public Transform bulletPos;
 
     private Transform player;
+
+    [SerializeField] private WaitForSeconds waitFire = new WaitForSeconds(1f);
+
+    public bool firePossibility = false;
+    public bool waterPossibility = false;
 
     private void Awake()
     {
@@ -21,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && firePossibility)
         {
             if(player.eulerAngles.y == 0)
             {
@@ -33,7 +39,16 @@ public class PlayerAttack : MonoBehaviour
                 var go = Instantiate(bullet, bulletPos.position, Quaternion.identity);
                 go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
             }
+
+            StartCoroutine(Co_FireCooltime());
         }
+    }
+
+    IEnumerator Co_FireCooltime()
+    {
+        firePossibility = false;
+        yield return waitFire;
+        firePossibility = true;
     }
 }
 
