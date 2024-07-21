@@ -172,7 +172,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.44, y: 1.44}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -202,5 +202,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerTransform: {fileID: 4988392179131016311, guid: 5e8e6dc3e2ff1134ebcc9aa8fcbcf9bf, type: 3}
+  playerTarget: {fileID: 0}
   gizmoAttack: {fileID: 0}
   animator: {fileID: 3835119041949238486}
+  enemyDamage: 0

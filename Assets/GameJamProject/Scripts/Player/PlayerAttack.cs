@@ -56,6 +56,8 @@ public class PlayerAttack : MonoBehaviour
                 var go = Instantiate(waterBullet, bulletPos.position, Quaternion.identity);
                 go.GetComponent<BulletMovement>().SetDirection(Vector2.right);
             }
+
+            StartCoroutine(Co_WaterCooltime());
         }
     }
 

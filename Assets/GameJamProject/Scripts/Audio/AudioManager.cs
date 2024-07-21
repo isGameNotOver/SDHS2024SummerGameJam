@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            Screen.SetResolution(1920, 1080, true);
             DontDestroyOnLoad(gameObject);
         }
         else

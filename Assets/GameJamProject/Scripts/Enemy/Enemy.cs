@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Transform gizmoAttack;
     [SerializeField] protected Animator animator;
 
+    [SerializeField] protected float enemyDamage = default;
+
 
     protected Vector3 moveVelocity;
     protected Rigidbody2D rigid;
@@ -27,7 +29,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         playerTarget = FindObjectOfType<PlayerMovement>().gameObject;
     }
@@ -81,6 +83,14 @@ public class Enemy : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 isLeft = true;
             }
+        }
+    }
+
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.GetComponent<PlayerHp>().Damaged(enemyDamage);
         }
     }
 

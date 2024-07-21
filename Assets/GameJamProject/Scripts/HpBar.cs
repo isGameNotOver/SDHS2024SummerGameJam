@@ -13,6 +13,17 @@ public class HpBar : MonoBehaviour
     [SerializeField] protected float maxHp;
     [SerializeField] protected float curHp;
 
+    private void Start()
+    {
+        hpBarRect = GetComponent<RectTransform>();
+        barImage = GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        SetHpBar();
+    }
+
     protected virtual void SetHpBar()
     {
         if (barMaster != null)
@@ -22,19 +33,6 @@ public class HpBar : MonoBehaviour
 
             // HP 바의 위치를 업데이트
             hpBarRect.position = screenPosition;
-
-            barImage.fillAmount = curHp / maxHp;
-
-            if (curHp <= 0)
-            {
-                Death();
-            }
         }
-    }
-
-    protected virtual void Death()
-    {
-        Destroy(barMaster.gameObject);
-        Destroy(gameObject);
     }
 }

@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class ShadowMonster : Enemy
 {
+    protected override void Start()
+    {
+        enemyDamage = 5f;
+        base.Start();
+    }
+
     private void Update()
     {
         Movement();
         PlayerTracking(playerCheckRange);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StatManager.instance.PlayerCurHp -= 5;
-        }
     }
 }
